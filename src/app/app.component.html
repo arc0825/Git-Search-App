@@ -1,0 +1,93 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+  <div class="row text-center">
+    <div class="col-md-12">
+      <h2 >GITHUB SEARCH</h2>
+    </div>
+  </div>
+  <br>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form>
+        <div class="form-group">
+    <input id="textbox-width" type="text" class="form-control " placeholder="Enter Github Username..." #name><br>
+    <button type="submit" class="btn btn-info " (click)="getInfo(name.value)">Search Details</button>
+  </div>
+  </form>
+
+  </div>
+  </div>
+
+  <br>
+<div class="row justify-content-center" *ngIf="user">
+  
+    <div class="col-md-10  card bg-light text-dark ">
+        <h4><div class="card-header "><strong>{{user.name}}</strong></div></h4>
+        
+      <div class="row">
+        <div class="col-md-4 text-center">
+          <img id="image-width"class="card-img-top img-fluid" [src]="user.avatar_url">
+        </div>
+        <div class="card-body">
+        <div class="col-md-8">
+          <div class="stats ">
+              <span class="badge badge-primary">{{user.public_repos}}&nbsp;Repos </span>&nbsp;
+                <span class="badge badge-secondary">{{user.public_gists}}&nbsp;Gists </span>&nbsp;
+                <span class="badge badge-success">{{user.followers}}&nbsp;Following </span>&nbsp;
+                <span class="badge badge-dark">{{user.following}}&nbsp;Followers </span>&nbsp;
+              </div>
+              <br>
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Username:</strong>&nbsp;{{user.login}}</li>
+                    <li class="list-group-item"><strong>Location:</strong>&nbsp;{{user.location}}</li>
+                    <li class="list-group-item"><strong>Email:</strong>&nbsp;{{user.email}}</li>
+                    <li class="list-group-item"><strong>Blog:</strong>&nbsp;{{user.blog}}</li>
+                    <li class="list-group-item"><strong>Member Since:</strong>&nbsp;{{user.created_at}}</li>
+                  </ul> 
+            
+    
+          </div>
+        </div>
+      </div>
+     
+      
+      
+    </div>
+    </div>
+    <br>
+
+    <div class="row justify-content-center" *ngIf="repos">
+        <div class="col-md-10 card bg-light text-dark ">
+            <h4><div class="card-header "><strong>Repos</strong></div></h4>
+            <div class="card-header">
+              <div class="row">
+                <div class="col-md-12">
+                  <div *ngFor="let repo of repos">
+                    <div class="row">
+                      <div class="col-md-9">
+                        <h5> <a href="{{repo.html_url}}" target="_blank">{{repo.name}}</a>  </h5>
+                        
+                        <p>{{repo.description}}</p>
+                      </div>
+                      <div class="col-md-3">
+                          <span class="badge badge-primary">{{repo.watchers}}&nbsp;Watchers </span>&nbsp;
+                          <span class="badge badge-secondary">{{repo.forks}}&nbsp;Forks </span>&nbsp;
+                      </div>
+                    </div>
+                    <hr>
+                  </div>
+                
+                </div>
+              </div>
+            </div>
+
+        </div>
+      </div>
+  </div>
+
+
+    
+  
+
+
+
