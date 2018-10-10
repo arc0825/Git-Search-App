@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { GithubComponent } from './github/github.component';
 import { GitService } from './service/gitservice.service';
 import { HttpClientModule } from '@angular/common/http';
+import { GlobalErrorHandler } from './global-error-handler-service.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule
   
   ],
-  providers: [GitService],
+  providers: [GitService,{provide:ErrorHandler, useClass:GlobalErrorHandler}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

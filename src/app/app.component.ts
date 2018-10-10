@@ -17,35 +17,21 @@ export class AppComponent{
   repos:repos[];
 
   constructor(private ser:GitService) {
-    
-    
-
-  
-}
+    }
 
 getInfo(username){
   this.ser.getUsers(username).subscribe((user)=>{
     this.user=user;
 
-},
-(error:HttpErrorResponse)=>{
-  console.log(error);
-  
-  
-  
 }),
 
 
 this.ser.getRepos(username).subscribe((repos)=>
 {
-  
   this.repos=repos;
   
 },
-(error:HttpErrorResponse)=>{
-  console.log(error);
-  
-});
+);
 }
 }
 
